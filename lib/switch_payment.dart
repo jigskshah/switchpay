@@ -56,9 +56,19 @@ class SwitchPayment{
       "order_id": orderId,
     };
 
-    methodChannel.invokeMethod("upi", arguments).onError((error, stackTrace) => {
-      onError(error)
+    methodChannel.invokeMethod("upi", arguments).onError((error, stackTrace) {
+      onError(error);
+
+      print("++++++++++++++");
+      print(error);
+      print("++++++++++++++");
+
     }).then((response) {
+
+      print("@@@@@@@@");
+      print(response);
+      print("@@@@@@@@");
+
       String status = "failed";
       String transactionId = "";
 
