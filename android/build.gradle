@@ -1,6 +1,4 @@
-//package android
-
-group 'com.switchpayment'
+group 'android.src.com.switchpayment'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -25,7 +23,11 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    namespace "com.switchpayement"
+    //namespace "com.switchpayement"
+    // Conditional for compatibility with AGP <4.2.
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.switchpayement'
+    }
     compileSdkVersion 33
     //ndkVersion flutter.ndkVersion
 
@@ -45,10 +47,14 @@ android {
     defaultConfig {
         //applicationId "com.switchpayement"
         minSdkVersion 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     lintOptions {
-        disable 'InvalidPackage'
+        //disable 'InvalidPackage'
+        checkAllWarnings true
+        warningsAsErrors true
+        disable 'AndroidGradlePluginVersion', 'InvalidPackage', 'GradleDependency'
     }
 
     dependencies {
