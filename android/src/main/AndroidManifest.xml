@@ -10,6 +10,12 @@
         </intent>
     </queries>
     <application>
+        <activity
+            android:name="com.switchpay.android.SwitchPayActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            />
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
