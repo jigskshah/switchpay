@@ -1,4 +1,4 @@
-group 'android.src.com.switchpayment'
+group 'com.switchpayment'
 version '1.0-SNAPSHOT'
 
 buildscript {
