@@ -22,7 +22,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.switchpayment
+        package: io.flutter.plugins.switchpayment
         pluginClass: MainActivityPlugin
 
 topics:

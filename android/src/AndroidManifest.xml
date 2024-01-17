@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.switchpayment">
+    package="io.flutter.plugins.switchpayment">
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />

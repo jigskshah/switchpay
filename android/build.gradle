@@ -1,6 +1,6 @@
 //package android
 
-group 'com.switchpayment'
+group 'io.flutter.plugins.switchpayment'
 version '1.0-SNAPSHOT'
 
 buildscript {

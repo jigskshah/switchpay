@@ -1,4 +1,4 @@
-package com.switchpayment
+package io.flutter.plugins.switchpayment
 
 import android.app.Activity
 import android.content.Intent
