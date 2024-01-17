@@ -12,9 +12,10 @@
     <application>
         <activity
             android:name="com.switchpay.android.SwitchPayActivity"
-            android:theme="@style/Theme.AppCompat"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             />
+
+<!--        android:theme="@style/Theme.AppCompat"-->
 
         <meta-data
             android:name="flutterEmbedding"
