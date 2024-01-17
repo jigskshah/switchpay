@@ -1,4 +1,4 @@
-package android
+//package android
 
 group 'com.switchpayment'
 version '1.0-SNAPSHOT'
