@@ -1,3 +1,8 @@
+package android
+
+group 'com.switchpayment'
+version '1.0-SNAPSHOT'
+
 buildscript {
     ext.kotlin_version = '1.7.10'
     repositories {
@@ -38,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.switchpayement"
+        //applicationId "com.switchpayement"
         minSdkVersion 21
     }
 
