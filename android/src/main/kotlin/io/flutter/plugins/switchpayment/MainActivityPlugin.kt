@@ -43,7 +43,6 @@ class MainActivityPlugin : MethodChannel.MethodCallHandler, FlutterPlugin, Activ
         }
 
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-
         }
 
         override fun onActivityStarted(activity: Activity) {
@@ -127,22 +126,7 @@ class MainActivityPlugin : MethodChannel.MethodCallHandler, FlutterPlugin, Activ
         }
     }
 
-    fun registerWith(registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
-        if (registrar.activity() == null) {
-            // If a background flutter view tries to register the plugin, there will be no activity from the registrar,
-            // we stop the registering process immediately because the ImagePicker requires an activity.
-            return
-        }
-        val activity: Activity = registrar.activity()!!
-        var application: Application? = null
-        if (registrar.context() != null) {
-            application = registrar.context().getApplicationContext() as Application
-        }
-        val plugin = MainActivityPlugin()
-        if (application != null) {
-            plugin.setup(registrar.messenger(), application, activity, registrar, null)
-        }
-    }
+
 
 
     @SuppressWarnings("unchecked")
@@ -186,8 +170,7 @@ class MainActivityPlugin : MethodChannel.MethodCallHandler, FlutterPlugin, Activ
     }
 
     // MethodChannel.Result wrapper that responds on the platform thread.
-    private class MethodResultWrapper internal constructor(result: MethodChannel.Result) :
-        MethodChannel.Result {
+    private class MethodResultWrapper(result: MethodChannel.Result) : MethodChannel.Result {
         private val methodResult: MethodChannel.Result
         private val handler: Handler
 
@@ -203,7 +186,7 @@ class MainActivityPlugin : MethodChannel.MethodCallHandler, FlutterPlugin, Activ
 
         @Override
         override fun error(errorCode: String, errorMessage: String?, errorDetails: Any?) {
-            handler.post { methodResult.error(errorCode!!, errorMessage, errorDetails) }
+            handler.post { methodResult.error(errorCode, errorMessage, errorDetails) }
         }
 
         @Override
@@ -238,9 +221,23 @@ class MainActivityPlugin : MethodChannel.MethodCallHandler, FlutterPlugin, Activ
         pluginBinding = null
     }
 
+    @SuppressWarnings("deprecation")
+    fun registerWith(registrar: PluginRegistry.Registrar) {
+        if (registrar.activity() == null) {
+            // If a background flutter view tries to register the plugin, there will be no activity from the registrar,
+            // we stop the registering process immediately because the ImagePicker requires an activity.
+            return
+        }
+        val activity: Activity = registrar.activity()!!
+        var application: Application? = null
+        application = registrar.context().applicationContext as Application
+        val plugin = MainActivityPlugin()
+        plugin.setup(registrar.messenger(), application, activity, registrar, null)
+    }
+
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         activityBinding = binding
-        setup(
+        this.setup(
             pluginBinding!!.binaryMessenger,
             pluginBinding!!.applicationContext as Application,
             activityBinding!!.activity,
