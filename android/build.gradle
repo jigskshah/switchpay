@@ -21,8 +21,8 @@ apply plugin: 'com.android.library'
 
 android {
     namespace "com.switchpayement"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdkVersion 33
+    //ndkVersion flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
