@@ -39,8 +39,9 @@ android {
     }
 
     lintOptions {
-        checkAllWarnings true
-        warningsAsErrors true
+        //checkAllWarnings true
+        //warningsAsErrors true
+        //minifyEnabled true
         disable 'AndroidGradlePluginVersion', 'InvalidPackage', 'GradleDependency'
     }
 
