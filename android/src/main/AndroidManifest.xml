@@ -10,6 +10,11 @@
         </intent>
     </queries>
     <application>
+
+        <activity
+            android:name="io.flutter.plugins.switchpayment.MainActivityPlugin"
+            />
+
         <activity
             android:name="com.switchpay.android.SwitchPayActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
